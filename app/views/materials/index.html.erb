@@ -1,0 +1,6 @@
+<div class="card">
+  <div class="lbl">Avance por material <span class="kr">문제집</span></div>
+  <div id="materials"><%= render @materials %></div>
+  <%= button_to "+ material", materials_path, class: "btn addbtn", form: { data: { turbo_stream: true } } %>
+  <div class="hint">Ej: un libro de Rust, una serie de VODs de ASL, módulos de un repo. <code>hechas / totales</code>.</div>
+</div>

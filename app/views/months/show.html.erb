@@ -1,0 +1,35 @@
+<% prev_p = (@first << 1).strftime("%Y-%m"); next_p = (@first >> 1).strftime("%Y-%m") %>
+<div class="card">
+  <div class="monthnav">
+    <%= link_to "‹", month_path(prev_p), class: "btn" %>
+    <div class="ml"><%= month_name(@first) %> <%= @first.year %></div>
+    <%= link_to "›", month_path(next_p), class: "btn" %>
+  </div>
+
+  <div class="cal">
+    <% %w[D L M M J V S].each_with_index do |d, i| %>
+      <div class="dow"><%= d %> <%= PlannerHelper::DOW_KR[i].first %></div>
+    <% end %>
+  </div>
+
+  <div class="cal" style="margin-top:5px">
+    <% @first.wday.times do %><div></div><% end %>
+    <% (@first..@first.end_of_month).each do |date| %>
+      <div class="cell <%= 'today' if date == Date.current %>">
+        <div class="n"><%= date.day %></div>
+        <%= form_with url: month_note_path, method: :patch,
+                      data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+          <%= f.hidden_field :on_date, value: date.iso8601 %>
+          <%= f.text_area :body, value: @notes[date]&.body, rows: 2 %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="lbl">Por hacer este mes <span class="kr">할 일</span></div>
+  <div id="month_todos"><%= render @todos %></div>
+  <%= button_to "+ tarea del mes", month_todos_path(period: @period),
+                class: "btn addbtn", form: { data: { turbo_stream: true } } %>
+</div>

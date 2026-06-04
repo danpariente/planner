@@ -1,0 +1,9 @@
+<% current = controller_name %>
+<nav class="tabs">
+  <%= link_to root_path,      class: "tab #{'on' if current == 'days'}" do %>Diario<span class="kr">오늘의 계획</span><% end %>
+  <%= link_to month_path,     class: "tab #{'on' if current == 'months'}" do %>Mensual<span class="kr">월간계획</span><% end %>
+  <%= link_to timetable_path, class: "tab #{'on' if current == 'timetables'}" do %>Semana<span class="kr">시간표</span><% end %>
+  <%= link_to goals_path,     class: "tab #{'on' if current == 'goals'}" do %>Objetivos<span class="kr">시험 성적</span><% end %>
+  <%= link_to tasks_path,     class: "tab #{'on' if current == 'tasks'}" do %>Tareas<span class="kr">수행평가</span><% end %>
+  <%= link_to materials_path, class: "tab #{'on' if current == 'materials'}" do %>Progreso<span class="kr">문제집</span><% end %>
+</nav>

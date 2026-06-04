@@ -1,0 +1,18 @@
+<div id="<%= dom_id(material) %>" style="border:1px solid var(--line2);border-radius:8px;padding:12px;margin-bottom:10px">
+  <%= form_with model: material, method: :patch,
+                data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+    <div class="row" style="gap:8px">
+      <%= f.text_field :title, placeholder: "material / curso / VODs", class: "grow" %>
+    </div>
+    <div class="row" style="gap:8px;margin-top:8px">
+      <%= f.number_field :done_count,  min: 0, class: "mono", style: "width:70px" %>
+      <span class="mono" style="color:var(--muted)">/</span>
+      <%= f.number_field :total_count, min: 0, class: "mono", style: "width:70px" %>
+      <span class="mono" style="color:var(--muted)">unidades</span>
+    </div>
+  <% end %>
+  <div class="pbar"><i style="width:<%= material.pct %>%"></i></div>
+  <div class="ptxt"><%= material.pct %>% · <%= material.done_count %> de <%= material.total_count %></div>
+  <%= button_to "× quitar", material_path(material), method: :delete, class: "del",
+                style: "margin-top:6px", form: { data: { turbo_stream: true } } %>
+</div>

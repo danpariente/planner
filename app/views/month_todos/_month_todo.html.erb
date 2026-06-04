@@ -1,0 +1,9 @@
+<div class="prio-item" id="<%= dom_id(month_todo) %>">
+  <%= form_with model: month_todo, method: :patch, class: "line",
+                data: { controller: "autosubmit", action: "input->autosubmit#submit change->autosubmit#now" } do |f| %>
+    <label class="chk"><%= f.check_box :done %></label>
+    <%= f.text_field :body, placeholder: "objetivo del mes...", class: "grow" %>
+  <% end %>
+  <%= button_to "×", month_todo_path(month_todo), method: :delete, class: "del",
+                form: { data: { turbo_stream: true } } %>
+</div>

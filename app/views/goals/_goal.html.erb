@@ -1,0 +1,38 @@
+<%#
+  Una <form> por celda. Un form_with que envuelva varios <td> dentro de un <tr>
+  es HTML inválido: el parser lo reubica (foster parenting) como form vacío y los
+  campos quedan desasociados, así que no se enviarían. Igual que plan_items.
+%>
+<tr id="<%= dom_id(goal) %>">
+  <td>
+    <%= form_with model: goal, method: :patch,
+                  data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+      <%= f.text_field :area, placeholder: "MMR, cert..." %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: goal, method: :patch,
+                  data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+      <%= f.text_field :target, class: "mono" %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: goal, method: :patch,
+                  data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+      <%= f.text_field :previous, class: "mono" %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: goal, method: :patch,
+                  data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+      <%= f.text_field :achieved, class: "mono" %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: goal, method: :patch,
+                  data: { controller: "autosubmit", action: "change->autosubmit#now" } do |f| %>
+      <label class="chk"><%= f.check_box :done %></label>
+    <% end %>
+  </td>
+  <td><%= button_to "×", goal_path(goal), method: :delete, class: "del", form: { data: { turbo_stream: true } } %></td>
+</tr>

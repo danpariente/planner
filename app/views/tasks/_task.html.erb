@@ -1,0 +1,31 @@
+<%#
+  Una <form> por celda (ver nota en goals/_goal). Un form que envuelva varios
+  <td> dentro de un <tr> es HTML inválido y los campos quedarían desasociados.
+%>
+<tr id="<%= dom_id(task) %>">
+  <td>
+    <%= form_with model: task, method: :patch,
+                  data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+      <%= f.text_field :category, placeholder: "cliente/proy" %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: task, method: :patch,
+                  data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+      <%= f.text_field :body, placeholder: "entregable..." %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: task, method: :patch,
+                  data: { controller: "autosubmit", action: "change->autosubmit#now" } do |f| %>
+      <%= f.date_field :due_on, class: "mono" %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: task, method: :patch,
+                  data: { controller: "autosubmit", action: "change->autosubmit#now" } do |f| %>
+      <label class="chk"><%= f.check_box :done %></label>
+    <% end %>
+  </td>
+  <td><%= button_to "×", task_path(task), method: :delete, class: "del", form: { data: { turbo_stream: true } } %></td>
+</tr>

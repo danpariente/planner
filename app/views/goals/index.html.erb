@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="lbl">Objetivos medibles <span class="kr">시험 성적</span> · meta → resultado</div>
+  <table>
+    <thead><tr><th>área · 과목</th><th style="width:74px">meta</th><th style="width:74px">anterior</th><th style="width:74px">logrado</th><th style="width:34px">✓</th><th style="width:30px"></th></tr></thead>
+    <tbody id="goals"><%= render @goals %></tbody>
+  </table>
+  <%= button_to "+ objetivo", goals_path, class: "btn addbtn", form: { data: { turbo_stream: true } } %>
+  <div class="hint">Ej: <code>MMR</code> · meta 1600 · anterior 1500 · logrado 1540. O certificaciones, KPIs de cliente, hitos.</div>
+</div>

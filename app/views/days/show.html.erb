@@ -1,0 +1,118 @@
+<% prev_day = day_path(@day.date - 1); next_day = day_path(@day.date + 1) %>
+
+<div class="dhead">
+  <div class="card datebox">
+    <div class="lbl">Fecha <span class="kr">날짜</span></div>
+    <div class="dnav">
+      <%= link_to "‹", prev_day, class: "btn" %>
+      <input type="date" value="<%= @day.date.iso8601 %>"
+             onchange="if (this.value) location.href = '/day/' + this.value">
+      <%= link_to "›", next_day, class: "btn" %>
+    </div>
+    <div class="dd"><%= dow_label(@day.date) %></div>
+
+    <%= form_with url: d_day_path, method: :patch,
+                  data: { controller: "autosubmit dday",
+                          action: "change->autosubmit#now change->dday#update",
+                          "dday-from-value": @day.date.iso8601 } do %>
+      <div class="row" style="margin-top:4px">
+        <span class="mono" style="font-size:12px;color:var(--muted)">D-</span>
+        <input type="date" name="target_date" value="<%= @target&.iso8601 %>"
+               style="flex:1" title="fecha objetivo (global, igual en todos los días)"
+               data-dday-target="input">
+        <span class="dd" data-dday-target="label"><%= d_minus_label(@day.date, @target) %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="card">
+    <div class="lbl">Prioridades <span class="kr">오늘의 할 일</span></div>
+    <div id="priorities"><%= render @day.priorities %></div>
+    <%= button_to "+ prioridad", priorities_path(date: @day.date.iso8601),
+                  class: "btn addbtn", form: { data: { turbo_stream: true } } %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="lbl">Plan de hoy <span class="kr">오늘의 계획</span></div>
+  <table>
+    <thead><tr><th style="width:120px">categoría · 과목</th><th>qué</th><th style="width:34px">✓</th><th style="width:30px"></th></tr></thead>
+    <tbody id="plan_items"><%= render @day.plan_items %></tbody>
+  </table>
+  <%= button_to "+ fila", plan_items_path(date: @day.date.iso8601),
+                class: "btn addbtn", form: { data: { turbo_stream: true } } %>
+</div>
+
+<div class="card"
+     data-controller="time-painter"
+     data-action="category:created@window->time-painter#addSwatch"
+     data-time-painter-url-value="<%= day_path(@day.date) %>"
+     data-time-painter-slots-value="<%= @day.slots.to_json %>"
+     data-time-painter-default-cat-value="<%= @categories.first&.key %>"
+     data-time-painter-colors-value="<%= Category.map.to_json %>">
+  <div class="lbl">Tiempo real <span class="kr">시간</span> · pinta las horas que trabajaste</div>
+  <div class="palette">
+    <% @categories.each_with_index do |c, i| %>
+      <div class="swatch <%= 'sel' if i.zero? %>" style="background:<%= c.hex %>"
+           data-time-painter-target="swatch" data-cat="<%= c.key %>"
+           data-action="click->time-painter#pick"><%= c.name %></div>
+    <% end %>
+    <div class="swatch erase" data-time-painter-target="swatch" data-cat="erase"
+         data-action="click->time-painter#pick">borrar</div>
+  </div>
+  <div class="timeline-wrap">
+    <div class="timeline" data-action="touchmove->time-painter#touchmove">
+      <% Day::SLOT_COUNT.times do |i| %>
+        <div class="slot" data-time-painter-target="slot" data-index="<%= i %>"
+             data-action="mousedown->time-painter#down mouseover->time-painter#over touchstart->time-painter#down"></div>
+      <% end %>
+    </div>
+    <div class="axis">
+      <% 0.step(Day::SLOT_COUNT - 1, 2) do |i| %>
+        <span><%= format("%02d", (Day::SLOT_START + i) % 24) %></span>
+      <% end %>
+    </div>
+  </div>
+  <div class="hint">Selecciona una categoría y arrastra sobre las horas. Pinta con <code>borrar</code> para limpiar. El total se calcula y guarda solo.</div>
+</div>
+
+<div class="card">
+  <div class="lbl">Balance del día</div>
+  <%= form_with scope: :day, url: day_path(@day.date), method: :patch,
+                data: { controller: "autosubmit", action: "input->autosubmit#submit change->autosubmit#now" } do |f| %>
+    <div class="stats">
+      <div class="stat">
+        <div class="k">meta · 목표</div>
+        <div class="row">
+          <%= f.number_field :goal_hours, value: @day.goal_hours, min: 0, step: 0.5,
+                style: "width:70px;font-family:'IBM Plex Mono'" %>
+          <span class="mono" style="color:var(--muted)">h</span>
+        </div>
+      </div>
+      <div class="stat">
+        <div class="k">real · 실제</div>
+        <div class="v" id="real-hours"><%= @day.real_hours %>h</div>
+      </div>
+      <div class="stat">
+        <div class="k">satisfacción · 만족도</div>
+        <div class="stars" data-controller="stars"
+             data-action="change->stars#update mouseleave->stars#reset">
+          <% 1.upto(5) do |n| %>
+            <label class="<%= 'on' if n <= @day.stars %>"
+                   data-stars-target="star" data-value="<%= n %>"
+                   data-action="mouseover->stars#preview">
+              <%= f.radio_button :stars, n, checked: (n == @day.stars) %>★
+            </label>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px">
+      <div class="lbl" style="margin-bottom:6px">Notas del día</div>
+      <%= f.text_area :notes, value: @day.notes, rows: 2,
+            placeholder: "reflexión, qué salió bien, qué ajustar mañana..." %>
+    </div>
+  <% end %>
+</div>
+
+<%# La columna 'real' se actualiza en vivo por el painter; recargar la página la persiste igual. %>

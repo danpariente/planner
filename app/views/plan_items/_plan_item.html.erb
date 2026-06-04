@@ -1,0 +1,29 @@
+<tr id="<%= dom_id(plan_item) %>">
+  <td data-controller="cat-select" data-cat-select-create-url-value="<%= categories_path %>">
+    <%= form_with model: plan_item, method: :patch, id: "#{dom_id(plan_item)}_cat",
+                  data: { "cat-select-target": "form" } do |f| %>
+      <% opts = Category.all.map { |c| [c.name, c.key, { "data-hex": c.hex }] } + [["+ nueva…", "__new__"]] %>
+      <%= f.select :category,
+            options_for_select(opts, plan_item.category), {},
+            data: { "cat-select-target": "select", action: "change->cat-select#changed" },
+            style: "color:#{plan_item.color}" %>
+    <% end %>
+    <input type="text" class="cat-new" placeholder="nombre + Enter…" hidden
+           data-cat-select-target="newInput"
+           data-action="keydown.enter->cat-select#create blur->cat-select#cancel keydown.esc->cat-select#cancel">
+  </td>
+  <td>
+    <%= form_with model: plan_item, method: :patch,
+                  data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
+      <%= f.text_field :body, placeholder: "..." %>
+    <% end %>
+  </td>
+  <td>
+    <%= form_with model: plan_item, method: :patch,
+                  data: { controller: "autosubmit", action: "change->autosubmit#now" } do |f| %>
+      <label class="chk"><%= f.check_box :done %></label>
+    <% end %>
+  </td>
+  <td><%= button_to "×", plan_item_path(plan_item), method: :delete, class: "del",
+                    form: { data: { turbo_stream: true } } %></td>
+</tr>
