@@ -33,3 +33,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Secretos locales de deploy (Kamal) — nunca versionar.
+/.kamal/registry_token
+/.kamal/resend_key
