@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
   def verify_code
     if (user = LoginToken.verify_code(params[:email], params[:code]))
       sign_in(user)
-      redirect_to root_path, notice: "¡Dentro! 👋"
+      redirect_to root_path, flash: { welcome: "¡Dentro!" }
     else
       flash.now[:alert] = "Código inválido o expirado."
       @email = params[:email].to_s
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
     if (lt = LoginToken.find_by_link(params[:token]))
       lt.consume!
       sign_in(lt.user)
-      redirect_to root_path, notice: "¡Dentro! 👋"
+      redirect_to root_path, flash: { welcome: "¡Dentro!" }
     else
       redirect_to login_path, alert: "El enlace no es válido o expiró. Pide uno nuevo."
     end

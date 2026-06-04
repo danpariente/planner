@@ -16,6 +16,11 @@
       <header>
         <div class="brand"><h1>PLANNER</h1><span class="kr">플래너</span></div>
       </header>
+      <% if flash[:welcome] %>
+        <div class="flash notice welcome" data-controller="flash" data-flash-delay-value="5000">
+          <%= render "shared/kawaii" %><span><%= flash[:welcome] %></span>
+        </div>
+      <% end %>
       <% if notice %><div class="flash notice" data-controller="flash"><%= notice %></div><% end %>
       <% if alert %><div class="flash alert" data-controller="flash"><%= alert %></div><% end %>
       <%= render "shared/nav" if current_user %>

@@ -27,6 +27,9 @@ nav.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
 .auth{max-width:380px;margin:40px auto}
 .flash{font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 14px;border-radius:8px;margin-bottom:16px;transition:opacity .4s}
 .flash.hide{opacity:0}
+.flash.welcome{display:flex;align-items:center;gap:10px}
+.kawaii{width:34px;height:34px;flex:none;animation:kawaii-pop .4s ease}
+@keyframes kawaii-pop{0%{transform:scale(.4) rotate(-8deg);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
 .flash.notice{background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent)}
 .flash.alert{background:rgba(189,126,80,.12);color:#bd7e50;border:1px solid #bd7e50}
 .tab.logout{color:var(--faint)}
