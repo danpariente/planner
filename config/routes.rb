@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Health check (lo usa kamal-proxy / load balancers): 200 si la app responde.
+  get "up" => "rails/health#show", as: :rails_health_check
+
   root "days#show"
 
   # Día (por fecha). Sin :date => hoy.
