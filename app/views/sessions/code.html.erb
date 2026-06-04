@@ -1,11 +1,12 @@
 <div class="card auth">
   <div class="lbl">Introduce el código <span class="kr">인증</span></div>
   <p class="hint" style="margin-bottom:14px">Revisa tu correo: pulsa el enlace mágico, o teclea aquí el código de 6 dígitos.</p>
-  <%= form_with url: login_code_path, method: :post do %>
+  <%= form_with url: login_code_path, method: :post, data: { controller: "otp" } do %>
     <%= hidden_field_tag :email, @email %>
     <%= text_field_tag :code, nil, placeholder: "______", required: true, autofocus: true,
           inputmode: "numeric", pattern: "[0-9]*", maxlength: 6, autocomplete: "one-time-code",
-          class: "mono", style: "font-size:22px;letter-spacing:8px;text-align:center" %>
+          class: "mono", style: "font-size:22px;letter-spacing:8px;text-align:center",
+          data: { "otp-target": "input", action: "input->otp#check" } %>
     <%= submit_tag "Verificar", class: "btn addbtn", style: "margin-top:10px" %>
   <% end %>
   <p class="hint" style="margin-top:12px"><%= link_to "← pedir otro enlace", login_path %></p>
