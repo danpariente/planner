@@ -4,6 +4,9 @@
 
 today = Date.current
 
+# ── Usuario permitido (auth por magic link) ───────────────────────────────────
+User.find_or_create_by!(email: "dansification@gmail.com")
+
 # ── Categorías (clave estable = slug que referencian plan_items.category y slots) ──
 [
   ["cliente",  "Cliente",  "#5b82a8"],

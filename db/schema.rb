@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_03_000003) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_04_000001) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "hex"
@@ -41,6 +41,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_000003) do
     t.string "previous"
     t.string "target"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "login_tokens", force: :cascade do |t|
+    t.integer "attempts", default: 0, null: false
+    t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "expires_at", null: false
+    t.string "token", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "used_at"
+    t.integer "user_id", null: false
+    t.index ["token"], name: "index_login_tokens_on_token", unique: true
+    t.index ["user_id"], name: "index_login_tokens_on_user_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -118,6 +131,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_000003) do
     t.index ["row", "col"], name: "index_timetable_cells_on_row_and_col", unique: true
   end
 
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  add_foreign_key "login_tokens", "users"
   add_foreign_key "plan_items", "days"
   add_foreign_key "priorities", "days"
 end

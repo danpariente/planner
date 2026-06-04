@@ -6,4 +6,7 @@
   <%= link_to goals_path,     class: "tab #{'on' if current == 'goals'}" do %>Objetivos<span class="kr">시험 성적</span><% end %>
   <%= link_to tasks_path,     class: "tab #{'on' if current == 'tasks'}" do %>Tareas<span class="kr">수행평가</span><% end %>
   <%= link_to materials_path, class: "tab #{'on' if current == 'materials'}" do %>Progreso<span class="kr">문제집</span><% end %>
+  <% if current_user %>
+    <%= button_to "salir", logout_path, method: :delete, class: "tab logout", form: { style: "margin-left:auto" } %>
+  <% end %>
 </nav>

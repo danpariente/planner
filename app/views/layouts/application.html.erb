@@ -16,7 +16,9 @@
       <header>
         <div class="brand"><h1>PLANNER</h1><span class="kr">플래너</span></div>
       </header>
-      <%= render "shared/nav" %>
+      <% if notice %><div class="flash notice"><%= notice %></div><% end %>
+      <% if alert %><div class="flash alert"><%= alert %></div><% end %>
+      <%= render "shared/nav" if current_user %>
       <%= yield %>
     </div>
   </body>

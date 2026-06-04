@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   # Health check (lo usa kamal-proxy / load balancers): 200 si la app responde.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Autenticación: magic link + código OTP (mono-usuario, sin contraseñas).
+  get    "login",        to: "sessions#new"
+  post   "login",        to: "sessions#create"
+  get    "login/code",   to: "sessions#code",        as: :login_code
+  post   "login/code",   to: "sessions#verify_code"
+  get    "login/l/:token", to: "sessions#magic",     as: :magic_login
+  delete "logout",       to: "sessions#destroy",     as: :logout
+
   root "days#show"
 
   # Día (por fecha). Sin :date => hoy.

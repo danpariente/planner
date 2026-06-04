@@ -37,7 +37,13 @@ registry:
 env:
   secret:
     - RAILS_MASTER_KEY
+    - RESEND_API_KEY
   clear:
+    # Remitente del email (Resend). Cámbialo a "onboarding@resend.dev" para
+    # arrancar sin verificar dominio, o a "Planner <login@planner.lifestyle>"
+    # una vez verificado tu dominio en Resend.
+    MAILER_FROM: "Planner <login@planner.lifestyle>"
+
     # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
     # When you start using multiple servers, you should split out job processing to a dedicated machine.
     SOLID_QUEUE_IN_PUMA: true
