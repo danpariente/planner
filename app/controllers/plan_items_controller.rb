@@ -1,20 +1,20 @@
 class PlanItemsController < ApplicationController
   def create
-    date = Date.iso8601(params[:date].to_s)
-    @day = Day.for(date)
-    @plan_item = @day.plan_items.create!(category: Category.first&.key, body: "", position: (@day.plan_items.maximum(:position) || -1) + 1)
+    @day = current_account.day_for(Date.iso8601(params[:date].to_s))
+    @plan_item = @day.plan_items.create!(category: current_account.categories.first&.key, body: "",
+                                         position: (@day.plan_items.maximum(:position) || -1) + 1)
   rescue ArgumentError
     head :bad_request
   end
 
   def update
-    @plan_item = PlanItem.find(params[:id])
+    @plan_item = current_account.plan_items.find(params[:id])
     @plan_item.update!(plan_item_params)
     head :no_content
   end
 
   def destroy
-    @plan_item = PlanItem.find(params[:id])
+    @plan_item = current_account.plan_items.find(params[:id])
     @plan_item.destroy
   end
 

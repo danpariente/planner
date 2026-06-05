@@ -49,7 +49,7 @@
      data-time-painter-url-value="<%= day_path(@day.date) %>"
      data-time-painter-slots-value="<%= @day.slots.to_json %>"
      data-time-painter-default-cat-value="<%= @categories.first&.key %>"
-     data-time-painter-colors-value="<%= Category.map.to_json %>">
+     data-time-painter-colors-value="<%= @categories.to_h { |c| [c.key, c.hex] }.to_json %>">
   <div class="lbl">Tiempo real <span class="kr">시간</span> · pinta las horas que trabajaste</div>
   <div class="palette">
     <% @categories.each_with_index do |c, i| %>

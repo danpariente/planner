@@ -2,7 +2,7 @@
   <td data-controller="cat-select" data-cat-select-create-url-value="<%= categories_path %>">
     <%= form_with model: plan_item, method: :patch, id: "#{dom_id(plan_item)}_cat",
                   data: { "cat-select-target": "form" } do |f| %>
-      <% opts = Category.all.map { |c| [c.name, c.key, { "data-hex": c.hex }] } + [["+ nueva…", "__new__"]] %>
+      <% opts = current_account.categories.map { |c| [c.name, c.key, { "data-hex": c.hex }] } + [["+ nueva…", "__new__"]] %>
       <%= f.select :category,
             options_for_select(opts, plan_item.category), {},
             data: { "cat-select-target": "select", action: "change->cat-select#changed" },

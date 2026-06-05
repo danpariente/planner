@@ -1,20 +1,20 @@
 class GoalsController < ApplicationController
   def index
-    @goals = Goal.all
+    @goals = current_account.goals
   end
 
   def create
-    @goal = Goal.create!(position: (Goal.maximum(:position) || -1) + 1)
+    @goal = current_account.goals.create!(position: (current_account.goals.maximum(:position) || -1) + 1)
   end
 
   def update
-    @goal = Goal.find(params[:id])
+    @goal = current_account.goals.find(params[:id])
     @goal.update!(params.require(:goal).permit(:area, :target, :previous, :achieved, :done))
     head :no_content
   end
 
   def destroy
-    @goal = Goal.find(params[:id])
+    @goal = current_account.goals.find(params[:id])
     @goal.destroy
   end
 end

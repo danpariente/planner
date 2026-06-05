@@ -1,14 +1,13 @@
 class DaysController < ApplicationController
   def show
-    @day = Day.for(parse_date(params[:date]))
-    @categories = Category.all
-    @target = Setting.target_date          # D-day global
+    @day = current_account.day_for(parse_date(params[:date]))
+    @categories = current_account.categories
+    @target = current_account.target_date          # D-day de la cuenta
   end
 
-  # Autosave del bloque "balance" (goal_hours, stars, notes) y del pintado de
-  # barras (slots) — ambos PATCH al mismo Day. (El D-day es global: SettingsController.)
+  # Autosave del balance (goal_hours, stars, notes) y del pintado de barras (slots).
   def update
-    @day = Day.for(parse_date(params[:date]))
+    @day = current_account.day_for(parse_date(params[:date]))
     @day.update!(day_params)
     respond_to do |format|
       format.turbo_stream { head :no_content }

@@ -1,13 +1,12 @@
 class TimetablesController < ApplicationController
   def show
-    @grid = TimetableCell.grid
+    @grid = TimetableCell.grid_for(current_account)
   end
 
-  # Recibe params[:cells]["row-col"] = body y hace upsert de cada celda.
   def update
     (params[:cells] || {}).each do |key, body|
       row, col = key.split("-").map(&:to_i)
-      TimetableCell.write(row, col, body)
+      TimetableCell.write(current_account, row, col, body)
     end
     head :no_content
   end

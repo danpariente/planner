@@ -1,13 +1,11 @@
 class CategoriesController < ApplicationController
-  # Alta "en el momento" desde el dropdown del plan. Clave auto-generada (slug
-  # estable), color tomado de la paleta armoniosa. Responde JSON para que el
-  # controlador Stimulus inserte la nueva opción y la seleccione.
+  # Alta "en el momento" desde el dropdown del plan (categoría de la cuenta).
   def create
-    @category = Category.create!(
+    @category = current_account.categories.create!(
       key:      Category.generate_key,
       name:     params.dig(:category, :name).to_s,
-      hex:      Category.next_hex,
-      position: Category.next_position
+      hex:      current_account.next_category_hex,
+      position: current_account.next_category_position
     )
     render json: { id: @category.id, key: @category.key, name: @category.name, hex: @category.hex }
   end

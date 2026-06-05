@@ -1,7 +1,8 @@
 class SettingsController < ApplicationController
-  # Autosave del D-day global (fecha objetivo única para todos los días).
+  # Autosave del D-day de la cuenta.
   def update_target
-    Setting.target_date = params[:target_date]
+    date = params[:target_date].presence && Date.iso8601(params[:target_date])
+    current_account.update!(target_date: date)
     head :no_content
   rescue ArgumentError
     head :bad_request

@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   private
 
   def require_authentication
-    Current.user = User.find_by(id: session[:user_id])
-    redirect_to login_path unless Current.user
+    Current.account = Account.find_by(id: session[:account_id])
+    redirect_to login_path unless Current.account
   end
 
   # Para que SessionsController abra el acceso a sus propias acciones.
@@ -19,16 +19,16 @@ class ApplicationController < ActionController::Base
     skip_before_action :require_authentication, **options
   end
 
-  def sign_in(user)
+  def sign_in(account)
     reset_session
-    session[:user_id] = user.id
-    Current.user = user
+    session[:account_id] = account.id
+    Current.account = account
   end
 
   def sign_out
     reset_session
-    Current.user = nil
+    Current.account = nil
   end
 
-  helper_method def current_user = Current.user
+  helper_method def current_account = Current.account
 end
