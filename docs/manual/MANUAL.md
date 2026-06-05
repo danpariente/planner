@@ -34,9 +34,9 @@ Así se ve el correo que recibes:
 
 ![Correo con el enlace mágico y el código](img/email.png)
 
-Al entrar, te recibe la mascota asomándose 👋:
+Al entrar, te recibe una estrellita en la notificación de bienvenida ⭐:
 
-![Bienvenida](img/bienvenida.gif)
+![Bienvenida](img/bienvenida.png)
 
 Para salir, usa el botón **salir** (arriba a la derecha del menú).
 
@@ -213,10 +213,6 @@ Se actualiza al elegir la fecha y al navegar entre días; si no, recarga la pág
 **¿Cómo cierro sesión?**
 Con el botón **salir** (arriba a la derecha del menú).
 
-**Quiero renombrar o borrar una categoría.**
-La app permite **crear** categorías; renombrarlas o borrarlas lo hace por ahora
-el administrador (ver apéndice).
-
 **¿Se pierden mis datos si entro desde otro dispositivo?**
 No. Tus datos viven en el servidor; entra con tu email desde donde quieras.
 
@@ -228,8 +224,6 @@ Tareas que hoy realiza el administrador (por consola), no desde la app:
 
 - **Autorizar a alguien:** añadir su email a la lista de cuentas.
 - **Quitar acceso:** eliminar su cuenta (borra también sus datos).
-- **Renombrar/borrar categorías:** la app permite crearlas; renombrarlas o
-  borrarlas se hace por consola (hasta que exista una pantalla de gestión).
 
 Detalles técnicos (Rails 8 + Hotwire, despliegue con Kamal, auth por magic link
 con Resend) están en el `README.md` del proyecto.
