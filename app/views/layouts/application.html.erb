@@ -18,7 +18,7 @@
       </header>
       <% if flash[:welcome] %>
         <div class="flash welcome" data-controller="flash" data-flash-delay-value="5000">
-          <span class="kawaii-peek"><%= render "shared/kawaii" %></span>
+          <span class="kawaii-peek"><%= image_tag "star.png", class: "kawaii", alt: "estrella" %></span>
           <span class="welcome-text"><%= flash[:welcome] %></span>
         </div>
       <% end %>
