@@ -1,10 +1,13 @@
 # Planner — 플래너 · Rails 8 + SQLite (tema Light)
 
 Planner personal server-rendered con Hotwire (Turbo + Stimulus), sin build de JS (importmap).
-App **mono-usuario** (sin auth). Seis secciones: Diario, Mensual, Semana, Objetivos, Tareas, Progreso.
+**Multi-cuenta**: cada cuenta es un planner privado, con login por magic link + código OTP.
+Seis secciones: Diario, Mensual, Semana, Objetivos, Tareas, Progreso.
 
 Originalmente un port de un *study planner* coreano; ahora generalizado a un planner de uso
 amplio (trabajo, estudio, personal…).
+
+📖 **Manual de uso (con capturas):** [docs/manual/MANUAL.md](docs/manual/MANUAL.md)
 
 ## Requisitos
 
