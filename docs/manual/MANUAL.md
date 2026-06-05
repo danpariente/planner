@@ -30,6 +30,10 @@ que llegan a tu correo.
 > lista, no llega nada (y el mensaje en pantalla es el mismo, por seguridad).
 > El enlace/código caduca a los **15 minutos** y es de **un solo uso**.
 
+Así se ve el correo que recibes:
+
+![Correo con el enlace mágico y el código](img/email.png)
+
 Al entrar, te recibe la mascota asomándose 👋:
 
 ![Bienvenida](img/bienvenida.gif)
@@ -149,10 +153,13 @@ Las categorías (las de colores del Plan y del pintado de horas) son **propias d
 cada cuenta**.
 
 - Una cuenta nueva empieza con tres por defecto: **Personal, Estudio, Otro**.
-- Puedes **crear más** en el momento desde el desplegable del Plan ("+ nueva…").
-  El color se asigna solo de una paleta armoniosa (tonos japoneses *和色*).
+- Puedes **crear más** en el momento desde el desplegable del Plan ("+ nueva…"):
+  aparece un campo, escribes el nombre y pulsas **Enter**.
+- El color se asigna solo de una paleta armoniosa (tonos japoneses *和色*).
 - La categoría queda disponible al instante en el desplegable y como color para
   pintar en "Tiempo real".
+
+![Crear una categoría desde el desplegable del plan](img/nueva_categoria.png)
 
 ---
 
@@ -174,6 +181,44 @@ cada cuenta**.
   empezar a llenarlo.
 - Algunos valores derivados (la cuenta D-, el % de un material, el color de una
   categoría recién elegida) se ven en vivo o, en algún caso, al **recargar**.
+
+---
+
+## 12. Preguntas frecuentes (FAQ)
+
+**¿Tengo que guardar?**
+No. Todo se guarda solo al escribir, marcar una casilla o pintar horas.
+
+**No me llega el correo de acceso.**
+Revisa spam/promociones. Si aun así no llega, puede que tu email **no esté
+autorizado** (no hay registro abierto) — pídele al administrador que te añada.
+Recuerda que el enlace/código caduca a los 15 minutos.
+
+**Pedí el enlace pero ya caducó / lo usé.**
+Vuelve a la pantalla de acceso y pide uno nuevo (cada uno invalida el anterior).
+
+**¿Otra persona puede ver mi planner?**
+No. Cada cuenta es privada: tus días, plan, objetivos, tareas, etc. son solo
+tuyos. Nadie más los ve.
+
+**¿Puedo usarlo en el móvil?**
+Sí, el diseño se adapta. Para pintar las horas, arrastra el dedo sobre la barra.
+
+**Pinté mal una hora.**
+Selecciona **borrar** en la paleta y arrastra sobre las casillas a limpiar.
+
+**Cambié la fecha objetivo (D-) y el número no se actualizó.**
+Se actualiza al elegir la fecha y al navegar entre días; si no, recarga la página.
+
+**¿Cómo cierro sesión?**
+Con el botón **salir** (arriba a la derecha del menú).
+
+**Quiero renombrar o borrar una categoría.**
+La app permite **crear** categorías; renombrarlas o borrarlas lo hace por ahora
+el administrador (ver apéndice).
+
+**¿Se pierden mis datos si entro desde otro dispositivo?**
+No. Tus datos viven en el servidor; entra con tu email desde donde quieras.
 
 ---
 
