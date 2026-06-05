@@ -12,9 +12,6 @@ class Category < ApplicationRecord
 
   # Categorías por defecto de una cuenta nueva.
   DEFAULTS = [
-    ["cliente",  "Cliente",  "#5b82a8"],
-    ["dev",      "Dev",      "#5e9c8f"],
-    ["sc",       "SC:BW",    "#7e974f"],
     ["personal", "Personal", "#7c828c"],
     ["estudio",  "Estudio",  "#8c7bb3"],
     ["otro",     "Otro",     "#bd7e50"]

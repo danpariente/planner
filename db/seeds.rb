@@ -3,8 +3,14 @@ today = Date.current
 
 # ── Cuentas permitidas (cada una = su propio planner) ─────────────────────────
 account = Account.find_or_create_by!(email: "dansification@gmail.com")
-account.seed_default_categories                 # no-op si ya tiene categorías
-Account.find_or_create_by!(email: "barboza.soledad@gmail.com")  # planner vacío
+# Categorías de ejemplo de la cuenta demo (las usan el plan y los slots de abajo).
+[
+  ["cliente","Cliente","#5b82a8"], ["dev","Dev","#5e9c8f"], ["sc","SC:BW","#7e974f"],
+  ["personal","Personal","#7c828c"], ["estudio","Estudio","#8c7bb3"], ["otro","Otro","#bd7e50"]
+].each_with_index do |(k, n, h), i|
+  account.categories.find_or_initialize_by(key: k).update!(name: n, hex: h, position: i)
+end
+Account.find_or_create_by!(email: "barboza.soledad@gmail.com")  # planner vacío (3 categorías por defecto)
 
 # ── D-day de la cuenta ────────────────────────────────────────────────────────
 account.update!(target_date: today + 21)        # examen/entrega en 3 semanas -> D-21
