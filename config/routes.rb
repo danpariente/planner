@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   # Health check (lo usa kamal-proxy / load balancers): 200 si la app responde.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # PWA (instalable): manifest + service worker, públicos.
+  # PWA (instalable + offline): manifest, service worker y página sin conexión.
   get "manifest"       => "pwa#manifest",       as: :pwa_manifest
   get "service-worker" => "pwa#service_worker", as: :pwa_service_worker
+  get "offline"        => "pwa#offline",        as: :pwa_offline
 
   # Autenticación: magic link + código OTP (mono-usuario, sin contraseñas).
   get    "login",        to: "sessions#new"

@@ -11,6 +11,10 @@ class PwaController < ApplicationController
            content_type: "text/javascript"
   end
 
+  def offline
+    render template: "pwa/offline", layout: false
+  end
+
   private
 
   # Los archivos PWA son públicos y se sirven a sí mismos; desactivamos el
