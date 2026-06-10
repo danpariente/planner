@@ -35,8 +35,8 @@ nav.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
 .flash.notice{background:var(--accent-dim);color:var(--accent);border:1px solid var(--accent)}
 .flash.alert{background:rgba(189,126,80,.12);color:#bd7e50;border:1px solid #bd7e50}
 .tab.logout{color:var(--faint)}
-.lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:flex;align-items:center;gap:7px}
-.lbl .kr{color:var(--accent);text-transform:none;letter-spacing:0}
+.lbl{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.lbl .kr{color:var(--accent);text-transform:none;letter-spacing:0;white-space:nowrap}
 input,select,textarea{font-family:'IBM Plex Sans',sans-serif;font-size:14px;background:var(--surface2);
   border:1px solid var(--line2);color:var(--txt);border-radius:6px;padding:7px 9px;width:100%}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
@@ -65,11 +65,18 @@ tr:has(.chk input:checked) input[type=text]:not(.cat-new){text-decoration:line-t
 .done input[type=text]{text-decoration:line-through;color:var(--muted)}
 table{width:100%;border-collapse:collapse}
 th{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;
-  text-align:left;padding:6px 8px;font-weight:500;border-bottom:1px solid var(--line2)}
+  text-align:left;padding:6px 8px;font-weight:500;border-bottom:1px solid var(--line2);word-break:keep-all}
 td{padding:5px 8px;border-bottom:1px solid var(--line2);vertical-align:middle}
 td form{margin:0}
 td input,td select{border:none;background:transparent;padding:5px 2px}
 td input:focus,td select:focus{background:var(--surface2)}
+/* Anchos de columnas (se reducen en móvil, ver media query al final) */
+th.wnum{width:110px}
+th.wcat{width:110px}
+th.wcat2{width:120px}
+th.wdate{width:150px}
+th.wchk{width:34px}
+th.wdel{width:30px}
 .timeline-wrap{margin-top:6px}
 .palette{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .swatch{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 10px;border-radius:6px;cursor:pointer;
@@ -109,3 +116,25 @@ td input:focus,td select:focus{background:var(--surface2)}
 .pbar{height:7px;background:var(--surface2);border-radius:4px;overflow:hidden;margin-top:6px}
 .pbar i{display:block;height:100%;background:var(--accent)}
 .ptxt{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px}
+
+/* ——— Móvil ——— */
+@media(max-width:620px){
+  .wrap{padding:14px 12px 60px}
+  /* Tabs: filas parejas que llenan el ancho; sin subtítulo coreano (no cabe) */
+  nav.tabs{gap:5px}
+  nav.tabs form{display:contents}
+  .tab{flex:1 1 auto;text-align:center;padding:8px 6px}
+  .tab .kr{display:none}
+  /* Tablas: columnas fijas más estrechas para que quepa el contenido */
+  th.wnum{width:64px}
+  th.wcat{width:84px}
+  th.wcat2{width:96px}
+  th.wdate{width:112px}
+  th.wchk{width:28px}
+  th.wdel{width:24px}
+  td input[type=date]{font-size:12px}
+  /* Calendario mensual: celdas más compactas */
+  .cal{gap:3px}
+  .cell{min-height:58px;padding:4px 5px}
+  .cell textarea{font-size:10px}
+}

@@ -36,7 +36,7 @@
 <div class="card">
   <div class="lbl">Plan de hoy <span class="kr">오늘의 계획</span></div>
   <table>
-    <thead><tr><th style="width:120px">categoría · 과목</th><th>qué</th><th style="width:34px">✓</th><th style="width:30px"></th></tr></thead>
+    <thead><tr><th class="wcat2">categoría · 과목</th><th>qué</th><th class="wchk">✓</th><th class="wdel"></th></tr></thead>
     <tbody id="plan_items"><%= render @day.plan_items %></tbody>
   </table>
   <%= button_to "+ fila", plan_items_path(date: @day.date.iso8601),

@@ -1,7 +1,7 @@
 <div class="card">
   <div class="lbl">Tareas y entregables <span class="kr">수행평가</span> · con deadline</div>
   <table>
-    <thead><tr><th style="width:110px">cat · 과목</th><th>contenido · 내용</th><th style="width:150px">deadline · 마감일</th><th style="width:34px">✓</th><th style="width:30px"></th></tr></thead>
+    <thead><tr><th class="wcat">cat · 과목</th><th>contenido · 내용</th><th class="wdate">deadline · 마감일</th><th class="wchk">✓</th><th class="wdel"></th></tr></thead>
     <tbody id="tasks"><%= render @tasks %></tbody>
   </table>
   <%= button_to "+ tarea", tasks_path, class: "btn addbtn", form: { data: { turbo_stream: true } } %>
