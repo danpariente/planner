@@ -92,10 +92,20 @@ th.wdel{width:30px}
 .stat{background:var(--surface2);border-radius:var(--radius);padding:10px 14px;flex:1;min-width:120px}
 .stat .k{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase}
 .stat .v{font-family:'IBM Plex Mono',monospace;font-size:20px;color:var(--accent);font-weight:600}
-.stars{font-size:22px;letter-spacing:3px;display:inline-flex}
+.stars{font-size:22px;letter-spacing:3px;display:inline-flex;position:relative}
 .stars label{color:var(--faint);cursor:pointer;transition:.1s}
 .stars input{display:none}
 .stars label.on{color:var(--star)}
+/* La mascota celebra sobre la estrella elegida y se desvanece */
+.star-pet{position:absolute;bottom:calc(100% - 4px);left:0;width:34px;transform:translateX(-50%);opacity:0;pointer-events:none}
+.star-pet.go{animation:star-jump .9s cubic-bezier(.34,1.5,.5,1) both}
+@keyframes star-jump{
+  0%{opacity:0;transform:translateX(-50%) translateY(10px) scale(.4) rotate(-14deg)}
+  35%{opacity:1;transform:translateX(-50%) translateY(-8px) scale(1.08) rotate(8deg)}
+  60%{transform:translateX(-50%) translateY(-3px) scale(1) rotate(-4deg)}
+  80%{opacity:1}
+  100%{opacity:0;transform:translateX(-50%) translateY(-14px) scale(.85) rotate(0)}
+}
 .addbtn{margin-top:8px;width:100%}
 .del{color:var(--faint);cursor:pointer;border:none;background:none;padding:4px 6px;font-size:14px;font-family:'IBM Plex Mono'}
 .del:hover{color:#f5a623;background:none;border:none}

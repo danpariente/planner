@@ -104,6 +104,8 @@
               <%= f.radio_button :stars, n, checked: (n == @day.stars) %>★
             </label>
           <% end %>
+          <%= image_tag "star.png", class: "star-pet", alt: "", aria: { hidden: true },
+                data: { stars_target: "pet" } %>
         </div>
       </div>
     </div>
