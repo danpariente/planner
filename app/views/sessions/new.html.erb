@@ -1,8 +1,9 @@
 <div class="card auth">
-  <div class="lbl">Entrar <span class="kr">로그인</span></div>
-  <p class="hint" style="margin-bottom:14px">Te enviaremos un enlace mágico y un código a tu correo.</p>
+  <div class="lbl"><%= t(".title") %> <span class="kr">로그인</span></div>
+  <p class="hint" style="margin-bottom:14px"><%= t(".hint") %></p>
   <%= form_with url: login_path, method: :post do %>
-    <%= email_field_tag :email, params[:email], placeholder: "tu@email.com", required: true, autofocus: true, autocomplete: "email" %>
-    <%= submit_tag "Enviar enlace", class: "btn addbtn", style: "margin-top:10px" %>
+    <%= email_field_tag :email, params[:email], placeholder: t(".email_placeholder"), required: true, autofocus: true, autocomplete: "email" %>
+    <%= submit_tag t(".send_link"), class: "btn addbtn", style: "margin-top:10px" %>
   <% end %>
+  <p class="hint" style="margin-top:12px"><%= locale_toggle("") %></p>
 </div>

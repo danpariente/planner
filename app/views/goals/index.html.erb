@@ -1,9 +1,9 @@
 <div class="card">
-  <div class="lbl">Objetivos medibles <span class="kr">시험 성적</span> · meta → resultado</div>
+  <div class="lbl"><%= t(".title") %> <span class="kr">시험 성적</span> · <%= t(".subtitle") %></div>
   <table>
-    <thead><tr><th>área · 과목</th><th class="wnum">meta</th><th class="wnum">anterior</th><th class="wnum">logrado</th><th class="wchk">✓</th><th class="wdel"></th></tr></thead>
+    <thead><tr><th><%= t(".col_area") %></th><th class="wnum"><%= t(".col_target") %></th><th class="wnum"><%= t(".col_previous") %></th><th class="wnum"><%= t(".col_achieved") %></th><th class="wchk">✓</th><th class="wdel"></th></tr></thead>
     <tbody id="goals"><%= render @goals %></tbody>
   </table>
-  <%= button_to "+ objetivo", goals_path, class: "btn addbtn", form: { data: { turbo_stream: true } } %>
-  <div class="hint">Ej: <code>MMR</code> · meta 1600 · anterior 1500 · logrado 1540. O certificaciones, KPIs de cliente, hitos.</div>
+  <%= button_to t(".add"), goals_path, class: "btn addbtn", form: { data: { turbo_stream: true } } %>
+  <div class="hint"><%= t(".hint_html") %></div>
 </div>

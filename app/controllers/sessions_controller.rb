@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     end
     # Mensaje genérico (no revelamos si el email existe).
     redirect_to login_code_path(email: params[:email].to_s.strip),
-                notice: "Si el email está autorizado, te enviamos un enlace y un código de 6 dígitos. Revisa tu correo."
+                notice: t("sessions.sent")
   end
 
   # Paso 2 (código): formulario para teclear el OTP.
@@ -26,9 +26,9 @@ class SessionsController < ApplicationController
   def verify_code
     if (account = LoginToken.verify_code(params[:email], params[:code]))
       sign_in(account)
-      redirect_to root_path, flash: { welcome: "¡Dentro!" }
+      redirect_to root_path, flash: { welcome: t("sessions.welcome") }
     else
-      flash.now[:alert] = "Código inválido o expirado."
+      flash.now[:alert] = t("sessions.invalid_code")
       @email = params[:email].to_s
       render :code, status: :unprocessable_entity
     end
@@ -39,14 +39,14 @@ class SessionsController < ApplicationController
     if (lt = LoginToken.find_by_link(params[:token]))
       lt.consume!
       sign_in(lt.account)
-      redirect_to root_path, flash: { welcome: "¡Dentro!" }
+      redirect_to root_path, flash: { welcome: t("sessions.welcome") }
     else
-      redirect_to login_path, alert: "El enlace no es válido o expiró. Pide uno nuevo."
+      redirect_to login_path, alert: t("sessions.invalid_link")
     end
   end
 
   def destroy
     sign_out
-    redirect_to login_path, notice: "Sesión cerrada."
+    redirect_to login_path, notice: t("sessions.logged_out")
   end
 end

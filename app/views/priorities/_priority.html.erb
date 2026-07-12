@@ -2,7 +2,7 @@
   <%= form_with model: priority, method: :patch, class: "line",
                 data: { controller: "autosubmit", action: "input->autosubmit#submit change->autosubmit#now" } do |f| %>
     <label class="chk"><%= f.check_box :done %></label>
-    <%= f.text_field :body, placeholder: "prioridad...", class: "grow" %>
+    <%= f.text_field :body, placeholder: t(".placeholder"), class: "grow" %>
   <% end %>
   <%= button_to "×", priority_path(priority), method: :delete, class: "del",
                 form: { data: { turbo_stream: true } } %>

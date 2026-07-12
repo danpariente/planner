@@ -7,7 +7,7 @@
   <td>
     <%= form_with model: goal, method: :patch,
                   data: { controller: "autosubmit", action: "input->autosubmit#submit" } do |f| %>
-      <%= f.text_field :area, placeholder: "MMR, cert..." %>
+      <%= f.text_field :area, placeholder: t(".area_placeholder") %>
     <% end %>
   </td>
   <td>

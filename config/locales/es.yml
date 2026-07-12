@@ -1,0 +1,143 @@
+# Español: idioma original de la app. Los subtítulos en coreano (스타일
+# planner) son parte del diseño y se mantienen iguales en ambos idiomas.
+es:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+    day_names: [domingo, lunes, martes, miércoles, jueves, viernes, sábado]
+    abbr_day_names: [dom, lun, mar, mié, jue, vie, sáb]
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+
+  shared:
+    nav:
+      daily: Diario
+      monthly: Mensual
+      week: Semana
+      goals: Objetivos
+      tasks: Tareas
+      progress: Progreso
+      logout: salir
+
+  days:
+    show:
+      date: Fecha
+      target_title: fecha objetivo (global, igual en todos los días)
+      priorities: Prioridades
+      add_priority: "+ prioridad"
+      plan_today: Plan de hoy
+      col_category: categoría · 과목
+      col_what: qué
+      add_row: "+ fila"
+      time_real: Tiempo real
+      paint_label: pinta las horas que trabajaste
+      erase: borrar
+      painter_hint_html: Selecciona una categoría y arrastra sobre las horas. Pinta con <code>%{erase}</code> para limpiar. El total se calcula y guarda solo.
+      balance: Balance del día
+      goal_k: meta · 목표
+      real_k: real · 실제
+      satisfaction_k: satisfacción · 만족도
+      notes: Notas del día
+      notes_placeholder: reflexión, qué salió bien, qué ajustar mañana...
+
+  priorities:
+    priority:
+      placeholder: prioridad...
+
+  plan_items:
+    plan_item:
+      new_category: "+ nueva…"
+      new_category_placeholder: nombre + Enter…
+
+  months:
+    show:
+      dow_letters: [D, L, M, M, J, V, S]
+      todos_title: Por hacer este mes
+      add_todo: "+ tarea del mes"
+
+  month_todos:
+    month_todo:
+      placeholder: objetivo del mes...
+
+  timetables:
+    show:
+      title: Horario fijo semanal
+      hour: hora
+      cols: [Lun, Mar, Mié, Jue, Vie]
+      hint: "Lo que se repite cada semana: bloques de cliente, práctica, gimnasio. Se guarda solo al escribir."
+
+  goals:
+    index:
+      title: Objetivos medibles
+      subtitle: meta → resultado
+      col_area: área · 과목
+      col_target: meta
+      col_previous: anterior
+      col_achieved: logrado
+      add: "+ objetivo"
+      hint_html: "Ej: <code>MMR</code> · meta 1600 · anterior 1500 · logrado 1540. O certificaciones, KPIs de cliente, hitos."
+    goal:
+      area_placeholder: MMR, cert...
+
+  tasks:
+    index:
+      title: Tareas y entregables
+      subtitle: con deadline
+      col_category: cat · 과목
+      col_body: contenido · 내용
+      col_due: deadline · 마감일
+      add: "+ tarea"
+      hint: Se listan por deadline más próximo. Marca el ✓ al entregar.
+    task:
+      category_placeholder: cliente/proy
+      body_placeholder: entregable...
+
+  materials:
+    index:
+      title: Avance por material
+      add: "+ material"
+      hint_html: "Ej: un libro de Rust, una serie de VODs de ASL, módulos de un repo. <code>hechas / totales</code>."
+    material:
+      title_placeholder: material / curso / VODs
+      units: unidades
+      progress: "%{done} de %{total}"
+      remove: "× quitar"
+
+  sessions:
+    new:
+      title: Entrar
+      hint: Te enviaremos un enlace mágico y un código a tu correo.
+      email_placeholder: tu@email.com
+      send_link: Enviar enlace
+    code:
+      title: Introduce el código
+      hint: "Revisa tu correo: pulsa el enlace mágico, o teclea aquí el código de 6 dígitos."
+      verify: Verificar
+      another_link: "← pedir otro enlace"
+    sent: Si el email está autorizado, te enviamos un enlace y un código de 6 dígitos. Revisa tu correo.
+    welcome: ¡Dentro!
+    invalid_code: Código inválido o expirado.
+    invalid_link: El enlace no es válido o expiró. Pide uno nuevo.
+    logged_out: Sesión cerrada.
+
+  session_mailer:
+    magic_link:
+      subject: Tu acceso a Planner (%{code})
+      intro: "Pulsa el botón para entrar (válido 15 minutos, un solo uso):"
+      button: Entrar a Planner
+      intro_text: "Entra con este enlace (válido 15 minutos, un solo uso):"
+      or_code: "O introduce este código en la app:"
+      ignore: Si no pediste esto, ignora este correo.
+
+  pwa:
+    offline:
+      title: Sin conexión · Planner
+      heading: Sin conexión
+      body: No hay internet ahora mismo. Vuelve a intentarlo cuando recuperes la conexión.
+      retry: Reintentar
+    manifest:
+      description: "Tu planner personal: diario, mensual, semana, objetivos, tareas y progreso."
+
+  layouts:
+    application:
+      star_alt: estrella

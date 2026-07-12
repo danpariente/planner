@@ -1,31 +1,135 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
+# English. Korean subtitles (스타일 planner) are part of the design and stay
+# the same in both languages.
 en:
-  hello: "Hello world"
+  shared:
+    nav:
+      daily: Daily
+      monthly: Monthly
+      week: Week
+      goals: Goals
+      tasks: Tasks
+      progress: Progress
+      logout: log out
+
+  days:
+    show:
+      date: Date
+      target_title: target date (global, same on every day)
+      priorities: Priorities
+      add_priority: "+ priority"
+      plan_today: Today's plan
+      col_category: category · 과목
+      col_what: what
+      add_row: "+ row"
+      time_real: Time log
+      paint_label: paint the hours you worked
+      erase: erase
+      painter_hint_html: Pick a category and drag across the hours. Paint with <code>%{erase}</code> to clear. The total is computed and saved automatically.
+      balance: Day balance
+      goal_k: goal · 목표
+      real_k: actual · 실제
+      satisfaction_k: satisfaction · 만족도
+      notes: Day notes
+      notes_placeholder: reflection, what went well, what to adjust tomorrow...
+
+  priorities:
+    priority:
+      placeholder: priority...
+
+  plan_items:
+    plan_item:
+      new_category: "+ new…"
+      new_category_placeholder: name + Enter…
+
+  months:
+    show:
+      dow_letters: [S, M, T, W, T, F, S]
+      todos_title: To do this month
+      add_todo: "+ month task"
+
+  month_todos:
+    month_todo:
+      placeholder: goal for the month...
+
+  timetables:
+    show:
+      title: Fixed weekly schedule
+      hour: time
+      cols: [Mon, Tue, Wed, Thu, Fri]
+      hint: "What repeats every week: client blocks, practice, gym. Saves itself as you type."
+
+  goals:
+    index:
+      title: Measurable goals
+      subtitle: target → result
+      col_area: area · 과목
+      col_target: target
+      col_previous: previous
+      col_achieved: achieved
+      add: "+ goal"
+      hint_html: "E.g. <code>MMR</code> · target 1600 · previous 1500 · achieved 1540. Or certifications, client KPIs, milestones."
+    goal:
+      area_placeholder: MMR, cert...
+
+  tasks:
+    index:
+      title: Tasks & deliverables
+      subtitle: with deadlines
+      col_category: cat · 과목
+      col_body: content · 내용
+      col_due: deadline · 마감일
+      add: "+ task"
+      hint: Sorted by nearest deadline. Check the ✓ when delivered.
+    task:
+      category_placeholder: client/proj
+      body_placeholder: deliverable...
+
+  materials:
+    index:
+      title: Progress by material
+      add: "+ material"
+      hint_html: "E.g. a Rust book, an ASL VOD series, modules of a repo. <code>done / total</code>."
+    material:
+      title_placeholder: material / course / VODs
+      units: units
+      progress: "%{done} of %{total}"
+      remove: "× remove"
+
+  sessions:
+    new:
+      title: Log in
+      hint: We'll email you a magic link and a code.
+      email_placeholder: you@email.com
+      send_link: Send link
+    code:
+      title: Enter the code
+      hint: "Check your email: click the magic link, or type the 6-digit code here."
+      verify: Verify
+      another_link: "← request another link"
+    sent: If that email is authorized, we sent you a link and a 6-digit code. Check your inbox.
+    welcome: You're in!
+    invalid_code: Invalid or expired code.
+    invalid_link: That link is invalid or has expired. Request a new one.
+    logged_out: Logged out.
+
+  session_mailer:
+    magic_link:
+      subject: Your Planner access (%{code})
+      intro: "Click the button to log in (valid for 15 minutes, single use):"
+      button: Open Planner
+      intro_text: "Log in with this link (valid for 15 minutes, single use):"
+      or_code: "Or enter this code in the app:"
+      ignore: If you didn't request this, ignore this email.
+
+  pwa:
+    offline:
+      title: Offline · Planner
+      heading: Offline
+      body: No internet right now. Try again once your connection is back.
+      retry: Retry
+    manifest:
+      description: "Your personal planner: daily, monthly, week, goals, tasks and progress."
+
+  layouts:
+    application:
+      star_alt: star

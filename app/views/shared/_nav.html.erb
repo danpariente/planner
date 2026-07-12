@@ -1,12 +1,13 @@
 <% current = controller_name %>
 <nav class="tabs">
-  <%= link_to root_path,      class: "tab #{'on' if current == 'days'}" do %>Diario<span class="kr">오늘의 계획</span><% end %>
-  <%= link_to month_path,     class: "tab #{'on' if current == 'months'}" do %>Mensual<span class="kr">월간계획</span><% end %>
-  <%= link_to timetable_path, class: "tab #{'on' if current == 'timetables'}" do %>Semana<span class="kr">시간표</span><% end %>
-  <%= link_to goals_path,     class: "tab #{'on' if current == 'goals'}" do %>Objetivos<span class="kr">시험 성적</span><% end %>
-  <%= link_to tasks_path,     class: "tab #{'on' if current == 'tasks'}" do %>Tareas<span class="kr">수행평가</span><% end %>
-  <%= link_to materials_path, class: "tab #{'on' if current == 'materials'}" do %>Progreso<span class="kr">문제집</span><% end %>
+  <%= link_to root_path,      class: "tab #{'on' if current == 'days'}" do %><%= t(".daily") %><span class="kr">오늘의 계획</span><% end %>
+  <%= link_to month_path,     class: "tab #{'on' if current == 'months'}" do %><%= t(".monthly") %><span class="kr">월간계획</span><% end %>
+  <%= link_to timetable_path, class: "tab #{'on' if current == 'timetables'}" do %><%= t(".week") %><span class="kr">시간표</span><% end %>
+  <%= link_to goals_path,     class: "tab #{'on' if current == 'goals'}" do %><%= t(".goals") %><span class="kr">시험 성적</span><% end %>
+  <%= link_to tasks_path,     class: "tab #{'on' if current == 'tasks'}" do %><%= t(".tasks") %><span class="kr">수행평가</span><% end %>
+  <%= link_to materials_path, class: "tab #{'on' if current == 'materials'}" do %><%= t(".progress") %><span class="kr">문제집</span><% end %>
+  <%= locale_toggle("tab lang") %>
   <% if current_account %>
-    <%= button_to "salir", logout_path, method: :delete, class: "tab logout", form: { style: "margin-left:auto" } %>
+    <%= button_to t(".logout"), logout_path, method: :delete, class: "tab logout", form: { style: "margin-left:auto" } %>
   <% end %>
 </nav>

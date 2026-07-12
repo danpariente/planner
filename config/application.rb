@@ -16,6 +16,11 @@ module Planner
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # Idiomas: español (original) e inglés. La preferencia vive en la cuenta
+    # (accounts.locale) y en session[:locale] para las páginas de login.
+    config.i18n.available_locales = %i[es en]
+    config.i18n.default_locale = :es
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

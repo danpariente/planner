@@ -2,13 +2,13 @@
   <td data-controller="cat-select" data-cat-select-create-url-value="<%= categories_path %>">
     <%= form_with model: plan_item, method: :patch, id: "#{dom_id(plan_item)}_cat",
                   data: { "cat-select-target": "form" } do |f| %>
-      <% opts = current_account.categories.map { |c| [c.name, c.key, { "data-hex": c.hex }] } + [["+ nueva…", "__new__"]] %>
+      <% opts = current_account.categories.map { |c| [c.name, c.key, { "data-hex": c.hex }] } + [[t(".new_category"), "__new__"]] %>
       <%= f.select :category,
             options_for_select(opts, plan_item.category), {},
             data: { "cat-select-target": "select", action: "change->cat-select#changed" },
             style: "color:#{plan_item.color}" %>
     <% end %>
-    <input type="text" class="cat-new" placeholder="nombre + Enter…" hidden
+    <input type="text" class="cat-new" placeholder="<%= t(".new_category_placeholder") %>" hidden
            data-cat-select-target="newInput"
            data-action="keydown.enter->cat-select#create blur->cat-select#cancel keydown.esc->cat-select#cancel">
   </td>

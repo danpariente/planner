@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<%= I18n.locale %>">
   <head>
     <title>Planner · 플래너</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,7 +7,8 @@
     <%= csp_meta_tag %>
 
     <%# PWA (instalable) %>
-    <link rel="manifest" href="<%= pwa_manifest_path %>">
+    <%# use-credentials: así el manifest llega con la cookie de sesión y sale en el idioma del usuario %>
+    <link rel="manifest" href="<%= pwa_manifest_path %>" crossorigin="use-credentials">
     <meta name="theme-color" content="#f7f8fa">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -28,7 +29,7 @@
       </header>
       <% if flash[:welcome] %>
         <div class="flash welcome" data-controller="flash" data-flash-delay-value="5000">
-          <%= image_tag "star.png", class: "kawaii", alt: "estrella" %>
+          <%= image_tag "star.png", class: "kawaii", alt: t("layouts.application.star_alt") %>
           <span class="welcome-text"><%= flash[:welcome] %></span>
         </div>
       <% end %>

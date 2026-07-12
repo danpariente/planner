@@ -1,13 +1,13 @@
 <div class="card">
-  <div class="lbl">Horario fijo semanal <span class="kr">시간표</span></div>
+  <div class="lbl"><%= t(".title") %> <span class="kr">시간표</span></div>
   <div class="wgrid">
     <%# Una <form> por celda: solo se envía la celda editada (antes el grid
         entero hacía upsert de las 55 celdas en cada pulsación). %>
     <table>
       <thead>
         <tr>
-          <th class="tcol">hora</th>
-          <% TimetableCell::COLS.each do |c| %><th><%= c %></th><% end %>
+          <th class="tcol"><%= t(".hour") %></th>
+          <% t(".cols").each do |c| %><th><%= c %></th><% end %>
         </tr>
       </thead>
       <tbody>
@@ -27,5 +27,5 @@
       </tbody>
     </table>
   </div>
-  <div class="hint">Lo que se repite cada semana: bloques de cliente, práctica, gimnasio. Se guarda solo al escribir.</div>
+  <div class="hint"><%= t(".hint") %></div>
 </div>

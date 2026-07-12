@@ -7,7 +7,7 @@
   </div>
 
   <div class="cal">
-    <% %w[D L M M J V S].each_with_index do |d, i| %>
+    <% t(".dow_letters").each_with_index do |d, i| %>
       <div class="dow"><%= d %> <%= PlannerHelper::DOW_KR[i].first %></div>
     <% end %>
   </div>
@@ -28,8 +28,8 @@
 </div>
 
 <div class="card">
-  <div class="lbl">Por hacer este mes <span class="kr">할 일</span></div>
+  <div class="lbl"><%= t(".todos_title") %> <span class="kr">할 일</span></div>
   <div id="month_todos"><%= render @todos %></div>
-  <%= button_to "+ tarea del mes", month_todos_path(period: @period),
+  <%= button_to t(".add_todo"), month_todos_path(period: @period),
                 class: "btn addbtn", form: { data: { turbo_stream: true } } %>
 </div>

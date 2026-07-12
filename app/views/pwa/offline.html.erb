@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<%= I18n.locale %>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sin conexión · Planner</title>
+  <title><%= t(".title") %></title>
   <style>
     body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
       background:#f7f8fa;color:#1a2230;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;text-align:center;padding:24px}
@@ -18,9 +18,9 @@
 <body>
   <div class="box">
     <div class="star">⭐</div>
-    <h1>Sin conexión</h1>
-    <p>No hay internet ahora mismo. Vuelve a intentarlo cuando recuperes la conexión.</p>
-    <button onclick="location.reload()">Reintentar</button>
+    <h1><%= t(".heading") %></h1>
+    <p><%= t(".body") %></p>
+    <button onclick="location.reload()"><%= t(".retry") %></button>
   </div>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <div class="card">
-  <div class="lbl">Tareas y entregables <span class="kr">수행평가</span> · con deadline</div>
+  <div class="lbl"><%= t(".title") %> <span class="kr">수행평가</span> · <%= t(".subtitle") %></div>
   <table>
-    <thead><tr><th class="wcat">cat · 과목</th><th>contenido · 내용</th><th class="wdate">deadline · 마감일</th><th class="wchk">✓</th><th class="wdel"></th></tr></thead>
+    <thead><tr><th class="wcat"><%= t(".col_category") %></th><th><%= t(".col_body") %></th><th class="wdate"><%= t(".col_due") %></th><th class="wchk">✓</th><th class="wdel"></th></tr></thead>
     <tbody id="tasks"><%= render @tasks %></tbody>
   </table>
-  <%= button_to "+ tarea", tasks_path, class: "btn addbtn", form: { data: { turbo_stream: true } } %>
-  <div class="hint">Se listan por deadline más próximo. Marca el ✓ al entregar.</div>
+  <%= button_to t(".add"), tasks_path, class: "btn addbtn", form: { data: { turbo_stream: true } } %>
+  <div class="hint"><%= t(".hint") %></div>
 </div>
