@@ -23,6 +23,13 @@
         <span class="dd" data-dday-target="label"><%= d_minus_label(@day.date, @target) %></span>
       </div>
     <% end %>
+
+    <%# Solo en días pasados con algo sin marcar: copia esos pendientes a hoy. %>
+    <% if @day.past? && @day.pending_count.positive? %>
+      <%= button_to t(".carry_forward", count: @day.pending_count),
+                    carry_forward_day_path(@day.date),
+                    class: "fwdbtn", title: t(".carry_forward_title") %>
+    <% end %>
   </div>
 
   <div class="card">

@@ -39,6 +39,19 @@ es:
       satisfaction_k: satisfacción · 만족도
       notes: Notas del día
       notes_placeholder: reflexión, qué salió bien, qué ajustar mañana...
+      carry_forward:
+        one: "»» pasar 1 pendiente a hoy"
+        other: "»» pasar %{count} pendientes a hoy"
+      carry_forward_title: copia a hoy las prioridades y filas del plan que quedaron sin marcar (siguen también en este día)
+    carry_forward:
+      done: "Copiado a hoy: %{items}"
+      none: No había pendientes nuevos que copiar.
+      priorities:
+        one: 1 prioridad
+        other: "%{count} prioridades"
+      plan_items:
+        one: 1 fila del plan
+        other: "%{count} filas del plan"
 
   priorities:
     priority:

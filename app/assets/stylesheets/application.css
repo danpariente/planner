@@ -107,6 +107,7 @@ th.wdel{width:30px}
   100%{opacity:0;transform:translateX(-50%) translateY(-14px) scale(.85) rotate(0)}
 }
 .addbtn{margin-top:8px;width:100%}
+.fwdbtn{width:100%;margin-top:auto;border-style:dashed;color:var(--accent)}
 .del{color:var(--faint);cursor:pointer;border:none;background:none;padding:4px 6px;font-size:14px;font-family:'IBM Plex Mono'}
 .del:hover{color:#f5a623;background:none;border:none}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}

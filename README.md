@@ -37,7 +37,10 @@ autoregistran con el `app/javascript/controllers/index.js` por defecto de Rails 
   pintada o `null`). `real_hours` se deriva (`slots.compact.size`), no se almacena. Tiene
   `priorities` y `plan_items`.
 - `Priority`, `PlanItem` — hijos del día (con `done`, `position`). `PlanItem` referencia una
-  categoría por su `key` (string).
+  categoría por su `key` (string). En un día pasado con filas sin marcar aparece
+  **"»» pasar N pendientes a hoy"**: las copia al día actual (el día viejo las conserva) y
+  te lleva allí. Omite lo ya hecho, lo vacío y lo que ya existe hoy, así que pulsarlo dos
+  veces no duplica.
 - `Category` — **tabla** `categories` (`key` slug estable, `name`, `hex`, `position`).
   `plan_items.category` y `day.slots` referencian la `key`, así que renombrar no rompe datos.
   Se crean **en el momento** desde el dropdown del plan ("+ nueva…"), con color auto-asignado

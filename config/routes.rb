@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   constraints date: /\d{4}-\d{2}-\d{2}/ do
     get   "day/:date", to: "days#show",   as: :day
     patch "day/:date", to: "days#update"
+    # "»» a hoy": copia los pendientes de ese día al día actual.
+    post  "day/:date/carry_forward", to: "days#carry_forward", as: :carry_forward_day
   end
 
   resources :priorities,  only: %i[create update destroy]

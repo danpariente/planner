@@ -31,6 +31,19 @@ en:
       satisfaction_k: satisfaction · 만족도
       notes: Day notes
       notes_placeholder: reflection, what went well, what to adjust tomorrow...
+      carry_forward:
+        one: "»» carry 1 unfinished item to today"
+        other: "»» carry %{count} unfinished items to today"
+      carry_forward_title: copies to today the priorities and plan rows left unchecked (they stay on this day too)
+    carry_forward:
+      done: "Carried to today: %{items}"
+      none: Nothing new to carry over.
+      priorities:
+        one: 1 priority
+        other: "%{count} priorities"
+      plan_items:
+        one: 1 plan row
+        other: "%{count} plan rows"
 
   priorities:
     priority:
